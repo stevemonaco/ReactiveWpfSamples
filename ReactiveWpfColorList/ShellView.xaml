@@ -40,7 +40,7 @@
                     <GridViewColumn Width="200" Header="NumberModel.A">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding A}">
+                                <TextBlock Text="{Binding A.Value}">
                                     <TextBlock.Background>
                                         <MultiBinding Converter="{StaticResource NumberBrushConverter}">
                                             <Binding Path="A.Value" />
@@ -54,7 +54,7 @@
                     <GridViewColumn Width="200" Header="NumberModel.B">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding B}">
+                                <TextBlock Text="{Binding B.Value}">
                                     <TextBlock.Background>
                                         <MultiBinding Converter="{StaticResource NumberBrushConverter}">
                                             <Binding Path="B.Value" />
@@ -68,11 +68,11 @@
                     <GridViewColumn Width="200" Header="NumberModel.C">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding B}">
+                                <TextBlock Text="{Binding C.Value}">
                                     <TextBlock.Background>
                                         <MultiBinding Converter="{StaticResource NumberBrushConverter}">
-                                            <Binding Path="B.Value" />
-                                            <Binding ElementName="mainGrid" Path="DataContext.AverageB.Value" />
+                                            <Binding Path="C.Value" />
+                                            <Binding ElementName="mainGrid" Path="DataContext.AverageC.Value" />
                                         </MultiBinding>
                                     </TextBlock.Background>
                                 </TextBlock>

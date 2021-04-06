@@ -29,7 +29,7 @@ namespace ReactiveWpfColorList
                 .Bind(out _models)
                 .Subscribe();
 
-            _timer.Interval = TimeSpan.FromMilliseconds(500);
+            _timer.Interval = TimeSpan.FromMilliseconds(200);
             _timer.Tick += _timer_Tick;
             _timer.Start();
         }
