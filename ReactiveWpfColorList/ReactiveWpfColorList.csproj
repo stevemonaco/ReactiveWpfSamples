@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DynamicData" Version="7.1.1" />
+    <PackageReference Include="DynamicData.ReactiveUI" Version="6.11.0.2613" />
+    <PackageReference Include="ReactiveProperty" Version="7.8.3" />
+    <PackageReference Include="ReactiveUI" Version="13.2.10" />
+    <PackageReference Include="ReactiveUI.Events.WPF" Version="13.2.10" />
+    <PackageReference Include="ReactiveUI.WPF" Version="13.2.10" />
+  </ItemGroup>
+
+</Project>
