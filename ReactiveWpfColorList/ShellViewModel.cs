@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Windows.Data;
 using System.Windows.Threading;
 using DynamicData;
+using DynamicData.Aggregation;
 using Reactive.Bindings;
 using ReactiveUI;
 
@@ -22,12 +25,31 @@ namespace ReactiveWpfColorList
         private readonly DispatcherTimer _timer = new();
         private readonly Random _random = new();
 
+        public CollectionViewSource SortedModelSource { get; }
+
         public ShellViewModel()
         {
             _modelSource.Connect()
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Bind(out _models)
                 .Subscribe();
+
+            _modelSource.Connect()
+                .Avg(x => x.A.Value)
+                .Subscribe(x => { AverageA.Value = x; });
+
+            _modelSource.Connect()
+                .Avg(x => x.B.Value)
+                .Subscribe(x => { AverageB.Value = x; });
+
+            _modelSource.Connect()
+                .Avg(x => x.C.Value)
+                .Subscribe(x => { AverageC.Value = x; });
+
+            SortedModelSource = new CollectionViewSource();
+            SortedModelSource.Source = Models;
+            SortedModelSource.SortDescriptions.Add(new SortDescription("C.Value", ListSortDirection.Descending));
+            SortedModelSource.IsLiveSortingRequested = true;
 
             _timer.Interval = TimeSpan.FromMilliseconds(200);
             _timer.Tick += _timer_Tick;
@@ -41,10 +63,6 @@ namespace ReactiveWpfColorList
             int c = _random.Next(31);
 
             _modelSource.Add(new NumberModel(a, b, c));
-
-            AverageA.Value = _modelSource.Items.Average(x => x.A.Value);
-            AverageB.Value = _modelSource.Items.Average(x => x.B.Value);
-            AverageC.Value = _modelSource.Items.Average(x => x.C.Value);
         }
     }
 }

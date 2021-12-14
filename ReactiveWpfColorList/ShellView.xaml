@@ -28,7 +28,7 @@
             <TextBlock Text="{Binding AverageC.Value, StringFormat=C Average: {0}}" />
         </StackPanel>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Models}">
+        <ListView Grid.Row="1" ItemsSource="{Binding SortedModelSource.View}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
