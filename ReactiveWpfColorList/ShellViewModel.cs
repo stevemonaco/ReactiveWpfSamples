@@ -49,7 +49,6 @@ namespace ReactiveWpfColorList
             SortedModelSource = new CollectionViewSource();
             SortedModelSource.Source = Models;
             SortedModelSource.SortDescriptions.Add(new SortDescription("C.Value", ListSortDirection.Descending));
-            SortedModelSource.IsLiveSortingRequested = true;
 
             _timer.Interval = TimeSpan.FromMilliseconds(200);
             _timer.Tick += _timer_Tick;
